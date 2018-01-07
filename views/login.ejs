@@ -1,0 +1,44 @@
+<% include header %>
+
+    <title>
+        <%= title %>
+    </title>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div class="text-center mt-5">
+                <h1>
+                    <%= title %>
+                </h1>
+            </div>
+
+            <div class="col-md-4 col-sm-12" style="margin: auto;">
+
+                <form action="/login" method="post">
+                    <% if (typeof error != "undefined"){ %>
+                        <p class="text-danger">
+                            error
+                        </p>
+                        <% } %>
+
+                    <div class="form-group">
+                        <label for="inputEmail">Email</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword">Password</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password" required>
+                    </div>
+                    <a href="/register">New user!!!</a>
+                    <button type="submit" class="btn btn-primary float-right mt-3">Login</button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </body>
+
+    </html>

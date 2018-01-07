@@ -1,0 +1,64 @@
+<% include header %>
+
+    <title>
+        <%= title %>
+    </title>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div class="text-center">
+                <h1>
+                    <%= title %>
+                </h1>
+            </div>
+
+            <div class="col-md-6 col-sm-12" style="margin: auto;">
+
+                <% if (data.length == 0){ %>
+                    <div class="card text-white bg-dark m-3">
+                        <div class="card-body text-center">
+                            no post yet
+                        </div>
+                    </div>
+                    <% } %>
+
+                <% data.forEach(function(post){ %>
+                    <div class="card mb-3">
+                        <img class="card-img-top" src="<%= post.img %>" alt="image" height="240px">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                #
+                                <%= post.type %>
+                            </h5>
+                            <p class="card-text">
+                                <%= post.title %>
+                                    <br>
+                                    <%= post.category %>
+                                        <br>
+                                        <%= post.location %>
+                            </p>
+                            <span class="card-text">
+                                <small class="text-muted">
+                                    <%= post.author %>
+                                </small>
+                            </span>
+                            <span class="card-text float-right">
+                                <small class="text-muted">
+                                    @
+                                    <%= post.date.toLocaleString() %>
+                                </small>
+                            </span>
+
+                        </div>
+                    </div>
+                    <% }) %>
+
+            </div>
+
+        </div>
+
+    </body>
+
+    </html>

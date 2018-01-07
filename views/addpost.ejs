@@ -1,0 +1,50 @@
+<% include header %>
+
+    <title>
+        <%= title %>
+    </title>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <div class="text-center mt-5">
+                <h1>
+                    <%= title %>
+                </h1>
+            </div>
+
+            <div class="col-md-6 col-sm-12" style="margin: auto;">
+
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputState">Lost or Found</label>
+                            <select id="inputState" class="form-control">
+                                <option>LOST</option>
+                                <option>FOUND</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputLocation">Location</label>
+                            <input type="text" class="form-control" id="inputLocation" placeholder="Location">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputDescription">Description</label>
+                        <textarea class="form-control" id="inputDescription" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="chooseFile">Choose image</label>
+                        <input type="file" class="form-control-file" id="chooseFile">
+                    </div>
+                    <button type="submit" class="btn btn-primary float-right mt-3 px-5">Add</button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </body>
+
+    </html>
