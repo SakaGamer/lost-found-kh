@@ -40,6 +40,7 @@ app.use('/lost', require('./routes/lost'))
 app.use('/found', require('./routes/found'))
 app.use('/search', require('./routes/search'))
 app.use('/profile', require('./routes/profile'))
+app.use('/logout', require('./routes/logout'))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

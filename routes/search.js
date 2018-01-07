@@ -3,8 +3,8 @@ var router = express.Router();
 var model = require('../model/model')
 
 router.get('/', function (req, res, next) {
-    query = req.query.q
-    var regex = new RegExp(/*searchWithoutSpecialChar*/query, 'i');
+    let query = req.query.q
+    let regex = new RegExp(/*searchWithoutSpecialChar*/query, 'i');
     model.post.find({ title : regex }, function (err, data) {
         res.render('search', {
             title: 'Search',

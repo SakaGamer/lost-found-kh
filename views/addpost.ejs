@@ -27,7 +27,15 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputLocation">Location</label>
-                            <input type="text" class="form-control" id="inputLocation" placeholder="Location">
+                            <!-- <input type="text" class="form-control" id="inputLocation" placeholder="Location"> -->
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <span class="oi oi-map-marker"></span>
+                                    </span>
+                                </div>
+                                <input type="email" class="form-control" id="inputEmail" placeholder="Location" name="email" required>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -38,7 +46,8 @@
                         <label for="chooseFile">Choose image</label>
                         <input type="file" class="form-control-file" id="chooseFile">
                     </div>
-                    <button type="submit" class="btn btn-primary float-right mt-3 px-5">Add</button>
+                    <button type="submit" class="btn btn-primary float-right mt-3 px-5">
+                        <span class="oi oi-plus"></span> add</button>
                 </form>
 
             </div>

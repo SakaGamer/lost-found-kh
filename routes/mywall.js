@@ -5,10 +5,8 @@ var model = require('../model/model')
 router.use(require('../check_login'))
 
 router.get('/', function (req, res) {
-    // let author = req.session.user
-    model.post.find({}, function (err, data) {
-        console.log("my wall item: " + data.length)
-
+    let author = req.session.user
+    model.post.find({ author : author }, function (err, data) {
         res.render('mywall', {
             title: 'My wall',
             data: data,
@@ -30,6 +28,22 @@ router.get('/addpost', function (req, res) {
         nav_profile: ''
     })
     console.log("new post")
+})
+
+router.post('/addpost', function(req, res){
+    let title = req.body.title
+    let location = req.body.location
+    let type = req.body.type
+    let author = req.session.user
+    var post = new model.post({
+        title : title,
+        author : author,
+        type : type,
+        location : location,
+        date : new Date(),
+        image : image
+    })
+    post.s
 })
 
 router.get('/edit/post/:post_id', function (req, res) {

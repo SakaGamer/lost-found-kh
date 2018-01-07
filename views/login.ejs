@@ -17,22 +17,40 @@
             <div class="col-md-4 col-sm-12" style="margin: auto;">
 
                 <form action="/login" method="post">
+                    
                     <% if (typeof error != "undefined"){ %>
                         <p class="text-danger text-center">
                             <%= error %>
                         </p>
                         <% } %>
 
-                    <div class="form-group">
-                        <label for="inputEmail">Email</label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword">Password</label>
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password" required>
-                    </div>
-                    <a href="/register">New user!!!</a>
-                    <button type="submit" class="btn btn-primary float-right mt-3">Login</button>
+                            <div class="form-group">
+                                <label for="inputEmail">Email</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <span class="oi oi-envelope-closed"></span>
+                                        </span>
+                                    </div>
+                                    <input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputPassword">Password</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <span class="oi oi-lock-locked"></span>
+                                        </span>
+                                    </div>
+
+                                    <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password" required>
+                                </div>
+                            </div>
+                            <input type="hidden" name="ref_path" value="<%= ref %>">
+                            <a href="/register"><span class="oi oi-person"></span> New user !!!</a>
+                            <button type="submit" class="btn btn-primary float-right mt-3 px-3"><span class="oi oi-account-login"></span> login</button>
                 </form>
 
             </div>

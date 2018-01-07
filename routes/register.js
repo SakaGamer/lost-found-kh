@@ -6,8 +6,12 @@ var hash = require('password-hash')
 router.use(require('../check_already_login'))
 
 router.get('/', function (req, res) {
+    let error = req.query.error
+    let ref_path = req.query.r
     res.render('register', {
         title: 'Register',
+        error: error,
+        ref: ref_path,
         nav_lost: '',
         nav_found: '',
         nav_mywall: '',
