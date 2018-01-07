@@ -11,7 +11,7 @@ router.get('/', function (req, res) {
         nav_lost: '',
         nav_found: '',
         nav_mywall: '',
-        nav_profile: 'active'
+        nav_profile: ''
     })
 })
 

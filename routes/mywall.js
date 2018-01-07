@@ -7,6 +7,8 @@ router.use(require('../check_login'))
 router.get('/', function (req, res) {
     // let author = req.session.user
     model.post.find({}, function (err, data) {
+        console.log("my wall item: " + data.length)
+
         res.render('mywall', {
             title: 'My wall',
             data: data,
@@ -30,9 +32,9 @@ router.get('/addpost', function (req, res) {
     console.log("new post")
 })
 
-router.get('/edit/post/:post_id', function(req, res){
+router.get('/edit/post/:post_id', function (req, res) {
     let post_id = req.params.post_id
-    model.post.findOne({ _id : post_id }, function(err, data){
+    model.post.findOne({ _id: post_id }, function (err, data) {
         res.render('editpost', {
             title: 'Edit post',
             post: data,
@@ -45,11 +47,7 @@ router.get('/edit/post/:post_id', function(req, res){
     })
 })
 
-router.post('addpost', function(req, res){
-
-})
-
-router.get('/delete/post/:post_id', function(req, res){
+router.get('/delete/post/:post_id', function (req, res) {
     let post_id = req.params.post_id
     model.post.remove({ _id: post_id }, function (err, data) {
         if (err) {
