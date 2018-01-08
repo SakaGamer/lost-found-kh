@@ -6,9 +6,9 @@ var multer = require('multer')
 var path = require('path')
 var decode64 = require('base-64').decode
 var mongoose = require('mongoose')
+var upload = multer({ dest: "./public/uploads/" })
 
 router.use(require('../check_login'))
-
 
 
 router.get('/', function (req, res) {
@@ -41,7 +41,7 @@ router.get('/addpost', function (req, res) {
 
 
 
-router.post('/addpost', multer({ dest: "./public/uploads/" }).single('imageFile'), function (req, res) {
+router.post('/addpost', upload.single('imageFile'), function (req, res) {
     let title = req.body.title
     let location = req.body.location
     let type = req.body.type
@@ -106,62 +106,45 @@ router.get('/post/edit/:post_id', function (req, res) {
             nav_mywall: 'active',
             nav_profile: ''
         })
-        // console.log("edit post: " + data._id)
+        console.log("edit post: " + data._id)
     })
 })
 
 
-
-router.post('/post/update/:post_id', function (req, res) {
+// update post by id
+router.post('/post/edit/:post_id', upload.single('imageFile'), function (req, res) {
     let post_id = req.params.post_id
-    let title = req.body.updateTitle
-    let location = req.body.updateLocation
-    let type = req.body.updateType
-    var objid = mongoose.Types.ObjectId(post_id)
+    let title = req.body.title
+    let location = req.body.location
+    let type = req.body.state
     let query = {
-        _id: objid
+        _id: post_id
     }
     var updatePost = new model.post({
-        title: title,
+        _id: post_id,
+        title: req.sessionID,
         type: type,
         location: location,
-        date: Date(),
+        date: Date()
     })
-    // model.post.update(query, { $set: updatePost }, function (err, data) {
-    //     if (err) {
-    //         res.status(400).json({
-    //             message: err.message
-    //         })
-    //         return
-    //     }
-    //     console.log('post update success');
-    //     res.redirect('/mywall');
-    // })
-    // model.post.findOneAndUpdate({"_id": objid}, updatePost, function(err, doc, data){
-    //     if (err) {
-    //         res.status(400).json({
-    //             message: err.message
-    //         })
-    //         return
-    //     }
-    //     console.log('post update success')
-    //     res.redirect('/mywall')
-    // })
-    model.post.findOneAndUpdate(query, updatePost, function(err, doc){
+    model.post.update(query, {$set: updatePost})
+    .exec(function(err, data){
         if (err) {
             res.status(400).json({
                 message: err.message
             })
             return
         }
+        console.log('post updated')
+        res.redirect('/mywall')
     })
 })
 
 
-
+// delete post by id 
 router.get('/post/delete/:post_id', function (req, res) {
     let post_id = req.params.post_id
-    model.post.remove({ _id: post_id }, function (err, data) {
+    model.post.findOneAndRemove({ _id: post_id }, function (err, data) {
         if (err) {
             res.status(400).json({
                 message: err.message

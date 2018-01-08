@@ -6,10 +6,10 @@ router.use(require('../check_login'))
 
 router.get('/', function (req, res) {
     let user = req.session.user
-    model.user.findOne({ email: user }, function (err, data) {
+    model.user.findOne({ email: user }, function (err, doc) {
         res.render('profile', {
             title: 'Profile',
-            data: data,
+            data: doc,
             nav_lost: '',
             nav_found: '',
             nav_mywall: '',

@@ -41,16 +41,17 @@
 
                                             <!-- <img class=" mr-3 " src="<%= 'data:'+ post.image.mimeType + ';base64,' + post.image.data %>" alt="image" width="160px" height="160px"
                                                 style="border-radius: 4px"> -->
-                                                <img class=" mr-3 " src="<%= post.image.path %>" alt="image" width="160px" height="160px"
-                                                    style="border-radius: 4px">
+                                            <img class=" mr-3 " src="<%= post.image.path %>" alt="image" width="160px" height="160px" style="border-radius: 4px">
                                             <div class="media-body">
                                                 <span class="card-text float-right">
                                                     <small class="text-muted">
-                                                        @<%= post.date.toLocaleString() %>
+                                                        @
+                                                        <%= post.date.toLocaleString() %>
                                                     </small>
                                                 </span>
                                                 <p class="mt-0 ">
-                                                    #<%= post.type %>
+                                                    #
+                                                    <%= post.type %>
                                                 </p>
                                                 <h5>
                                                     <%= post.title %>
@@ -59,14 +60,42 @@
                                                     <span class="oi oi-map-marker"></span>
                                                     <%= post.location %>
                                                 </p>
+
                                                 <a href="/mywall/post/edit/<%= post._id %>" class="btn btn-primary">
                                                     <span class="oi oi-pencil"></span> edit</a>
-                                                <a href="mywall/post/delete/<%= post._id %>" class="btn btn-danger">
-                                                    <span class="oi oi-trash"></span> delete</a>
+
+                                                <button class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal">
+                                                    <span class="oi oi-trash"></span> delete</button>
                                             </div>
                                     </div>
                                 </div>
                             </div>
+
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Attention !!!</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Delete this post ???
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                                            <a href="/mywall/post/delete/<%= post._id %>">
+                                                <button type="button" class="btn btn-danger"><span class="oi oi-trash"></span> delete</button>
+                                            </a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
 
                             <% }) %>
 
