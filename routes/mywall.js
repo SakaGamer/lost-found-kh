@@ -13,7 +13,9 @@ router.use(require('../check_login'))
 
 router.get('/', function (req, res) {
     let author = req.session.user
-    model.post.find({ author: author }, function (err, data) {
+    model.post.find({ author: author })
+    .sort({ date : -1 })
+    .exec(function (err, data) {
         res.render('mywall', {
             title: 'My wall',
             data: data,
@@ -122,7 +124,7 @@ router.post('/post/edit/:post_id', upload.single('imageFile'), function (req, re
     }
     var updatePost = new model.post({
         _id: post_id,
-        title: req.sessionID,
+        title: title,
         type: type,
         location: location,
         date: Date()
@@ -144,7 +146,7 @@ router.post('/post/edit/:post_id', upload.single('imageFile'), function (req, re
 // delete post by id 
 router.get('/post/delete/:post_id', function (req, res) {
     let post_id = req.params.post_id
-    model.post.findOneAndRemove({ _id: post_id }, function (err, data) {
+    model.post.remove({ _id: post_id }, function (err, data) {
         if (err) {
             res.status(400).json({
                 message: err.message

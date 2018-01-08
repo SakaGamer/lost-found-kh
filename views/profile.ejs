@@ -18,16 +18,16 @@
                 
 
                 <div class="card mt-3">
-                    <% if (data.image == ""){ 
-                        data.image = '/images/img_avatar.png' } %>
-                    <img class="card-img-top" src="<%= data.image %>" alt="image">
+                    <% if (user.image.path == undefined){ 
+                        user.image.path = '/images/img_avatar.png' } %>
+                    <img class="card-img-top" src="<%= user.image.path %>" alt="image">
                     <div class="card-body">
                         <p class="card-text">
-                            <%= data.name %>
+                            <%= user.name %>
                         </p>
 
                         <small class="text-muted">
-                            <%= data.email %>
+                            <%= user.email %>
                         </small>
                     </div>
 

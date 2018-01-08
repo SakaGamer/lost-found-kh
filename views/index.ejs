@@ -40,11 +40,17 @@
                       <%= post.type %>
                     </span>
                     <span class="card-text float-right">
+                      <% if(post.location.length > 40 ){
+                      post.location = post.location.substring(0, 40) + '...' 
+                      } %>
                       <span class="oi oi-map-marker"></span>
                       <%= post.location %>
                     </span>
                   </p>
                   <p class="card-text text-center">
+                    <% if(post.title.length > 70 ){
+                    post.title = post.title.substring(0, 70) + '...'
+                    } %>
                     <%= post.title %>
                   </p>
                   <span class="card-text">
