@@ -38,22 +38,35 @@ var postSchema = new Schema({
     title: String,
     author: String,
     body: String,
+    location: String,
+    type: String,
+    image: {
+        path: String,
+        data: String,
+        mimeType: String,
+        filename: String,
+        size: Number
+    },
     comments: [{ body: String, date: Date }],
     date: Date,
-    hidden: Boolean,
-    meta: {
-        votes: Number,
-        favs: Number
-    }
+    hidden: Boolean
 })
 
 var userSchema = new Schema({
-    username: String,
+    name: String,
     email: String,
     phone: String,
     password: String,
-    images: String,
+    image: {
+        path: String,
+        data: String,
+        mimeType: String,
+        filename: String,
+        size: Number
+    },
     date: Date,
+    role: String,
+    post_count: Number
 })
 
 

@@ -31,35 +31,44 @@
                     </div>
                     <% } %>
 
-                <% data.forEach(function(post){ %>
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <div class="media">
-                                <img class=" mr-3 " src="/images/weekend.png " alt="image " width="80px " height="80px " style="border-radius:
-                                4px; ">
-                                <div class="media-body">
-                                    <span class="card-text float-right">
-                                        <small class="text-muted">
-                                            @<%= post.date.toLocaleString() %>
-                                        </small>
-                                    </span>
-                                    <h5 class="mt-0 ">
-                                        <%= post.type %>
-                                            TYPE
-                                    </h5>
-                                    <p>
-                                        <%= post.title %>
-                                    </p>
-                                    <a href="/mywall/edit/post/<%= post._id %>" class="btn btn-primary">
-                                        <span class="oi oi-pencil"></span> edit</a>
-                                    <a href="mywall/delete/post/<%= post._id %>" class="btn btn-danger">
-                                        <span class="oi oi-trash"></span> delete</a>
+                        <% data.forEach(function(post){ %>
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="media">
+
+                                        <% if (data.image == ""){ 
+                                    data.image.path = '/images/weekend.png' } %>
+
+                                            <!-- <img class=" mr-3 " src="<%= 'data:'+ post.image.mimeType + ';base64,' + post.image.data %>" alt="image" width="160px" height="160px"
+                                                style="border-radius: 4px"> -->
+                                                <img class=" mr-3 " src="<%= post.image.path %>" alt="image" width="160px" height="160px"
+                                                    style="border-radius: 4px">
+                                            <div class="media-body">
+                                                <span class="card-text float-right">
+                                                    <small class="text-muted">
+                                                        @<%= post.date.toLocaleString() %>
+                                                    </small>
+                                                </span>
+                                                <p class="mt-0 ">
+                                                    #<%= post.type %>
+                                                </p>
+                                                <h5>
+                                                    <%= post.title %>
+                                                </h5>
+                                                <p>
+                                                    <span class="oi oi-map-marker"></span>
+                                                    <%= post.location %>
+                                                </p>
+                                                <a href="/mywall/post/edit/<%= post._id %>" class="btn btn-primary">
+                                                    <span class="oi oi-pencil"></span> edit</a>
+                                                <a href="mywall/post/delete/<%= post._id %>" class="btn btn-danger">
+                                                    <span class="oi oi-trash"></span> delete</a>
+                                            </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <% }) %>
+                            <% }) %>
 
             </div>
 

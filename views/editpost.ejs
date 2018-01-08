@@ -16,33 +16,38 @@
 
             <div class="col-md-6 col-sm-12" style="margin: auto;">
 
-                <form>
+
+                <form action="/mywall/post/update/<%= post._id %>" method="post" enctype="multipart/form-data">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputState">Lost or Found</label>
-                            <select id="inputState" class="form-control">
+                            <select id="inputState" class="form-control" name="updateType">
                                 <option>LOST</option>
                                 <option>FOUND</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputLocation">Location</label>
-                            <input type="text" class="form-control" id="inputLocation" placeholder="Location" value='<%= post.location %>'>
+                            <input type="text" class="form-control" id="inputLocation" placeholder="Location" name="updateLocation" value='<%= post.location %>'>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputDescription">Description</label>
-                        <textarea class="form-control" id="inputDescription" rows="3"><%= post.title %></textarea>
+                        <textarea class="form-control" id="inputDescription" rows="3" name="updateTitle"><%= post.title %></textarea>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <img src="<%= 'data:'+ post.image.mimeType + ';base64,' + post.image.data %>" alt="image" width="240px" height="140px" style="border-radius: 4px">
                     </div>
                     <div class="form-group">
-                        <label for="chooseFile">Choose image</label>
-                        <input type="file" class="form-control-file" id="chooseFile">
+                        <label for="chooseFile">Change image</label>
+                        <input type="file" class="form-control-file" id="chooseFile" name="updateFile">
                     </div>
+                    <input type="hidden" name="updatePostId" value="<%= post._id %>">
                     <button type="submit" class="btn btn-primary float-right mt-3 px-5">Update</button>
                 </form>
 
-            </div>
 
+            </div>
         </div>
 
     </body>

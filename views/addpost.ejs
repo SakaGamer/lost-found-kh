@@ -16,36 +16,38 @@
 
             <div class="col-md-6 col-sm-12" style="margin: auto;">
 
-                <form>
+                <form action="/mywall/addpost" method="post" enctype="multipart/form-data">
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 col-sm-12">
                             <label for="inputState">Lost or Found</label>
-                            <select id="inputState" class="form-control">
+                            <select id="inputState" class="form-control" name="type">
                                 <option>LOST</option>
                                 <option>FOUND</option>
                             </select>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 col-sm-12">
                             <label for="inputLocation">Location</label>
-                            <!-- <input type="text" class="form-control" id="inputLocation" placeholder="Location"> -->
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
                                         <span class="oi oi-map-marker"></span>
                                     </span>
                                 </div>
-                                <input type="email" class="form-control" id="inputEmail" placeholder="Location" name="email" required>
+                                <input type="text" class="form-control" id="inputLocation" placeholder="Location" name="location" required>
                             </div>
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label for="inputDescription">Description</label>
-                        <textarea class="form-control" id="inputDescription" rows="3"></textarea>
+                        <textarea class="form-control" id="inputDescription" name="title" rows="3"></textarea>
                     </div>
+
                     <div class="form-group">
                         <label for="chooseFile">Choose image</label>
-                        <input type="file" class="form-control-file" id="chooseFile">
+                        <input type="file" class="form-control-file" id="chooseFile" name="imageFile">
                     </div>
+
                     <button type="submit" class="btn btn-primary float-right mt-3 px-5">
                         <span class="oi oi-plus"></span> add</button>
                 </form>
