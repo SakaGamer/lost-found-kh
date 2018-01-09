@@ -29,8 +29,7 @@
                         <img class="card-img-top" src="<%= post.image.path %>" alt="image" height="240px">
                         <div class="card-body">
                             <h5 class="card-title">
-                                #
-                                <%= post.type %>
+                                #<%= post.type %>
                             </h5>
                             <p class="card-text">
                                 <%= post.title %>
@@ -46,7 +45,6 @@
                             </span>
                             <span class="card-text float-right">
                                 <small class="text-muted">
-                                    @
                                     <%= post.date.toLocaleString() %>
                                 </small>
                             </span>
